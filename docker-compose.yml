@@ -1,0 +1,20 @@
+services:
+
+  laravel-base:
+    build:
+      context: laravel-base
+      dockerfile: Dockerfile
+    container_name: app
+    volumes:
+      - ./php/php.ini:/user/local/etc/php/php.ini
+      - ./laravel-base:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "8000:80"
+    command: |
+      bash -c "
+        chown -R www-data:www-data storage bootstrap/cache database && 
+        chmod -R 775 storage bootstrap/cache database/database.sqlite && 
+        php artisan migrate --force
+        /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+      "
