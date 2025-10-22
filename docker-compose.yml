@@ -1,5 +1,20 @@
 services:
 
+  # Reverse Proxy Nginx
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - laravel-base
+    networks:
+      laravel-network:
+
+  # Base laravel app
   laravel-base:
     build:
       context: laravel-base
@@ -9,8 +24,6 @@ services:
       - ./php/php.ini:/user/local/etc/php/php.ini
       - ./laravel-base:/var/www/html
     working_dir: /var/www/html
-    ports:
-      - "8000:80"
     command: |
       bash -c "
         chown -R www-data:www-data storage bootstrap/cache database && 
@@ -18,3 +31,9 @@ services:
         php artisan migrate --force
         /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
       "
+    networks:
+      laravel-network:
+
+networks:
+  laravel-network:
+    driver: bridge

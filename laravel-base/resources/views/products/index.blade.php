@@ -14,7 +14,7 @@
                 {{ $product->name }}
             </div>
             <div class="text-center">
-                <div>€ {{ Number::currency($product->price) }}</div>
+                <div>{{ Number::currency($product->price) }}</div>
             </div>
         @endforeach
     </div>
