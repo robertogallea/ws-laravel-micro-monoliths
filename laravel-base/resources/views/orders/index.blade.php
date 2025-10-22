@@ -28,7 +28,7 @@
                 <div class="grid grid-cols-2">
                     @forelse($order->products as $product)
                         <div>{{ $product->name }}</div>
-                        <div>€ {{ Number::currency($product->price) }}</div>
+                        <div>{{ Number::currency($product->price) }}</div>
                     @empty
                         -
                     @endforelse
