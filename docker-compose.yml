@@ -43,6 +43,7 @@ services:
       mysql:
         condition: service_healthy
 
+  # MySQL Server
   mysql:
     image: mysql:8.0
     container_name: mysql-laravel
