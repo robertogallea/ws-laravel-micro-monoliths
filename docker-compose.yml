@@ -51,17 +51,17 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}           # Utente di default
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}   # Password utente di default
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1" ]
-      interval: 2s        # prova ogni 3s invece di 10s
+      interval: 2s
       timeout: 2s
       retries: 10
-      start_period: 2s    # tempo “di grazia” iniziale prima di contare i retry
+      start_period: 2s
     networks:
       - laravel-network
 
