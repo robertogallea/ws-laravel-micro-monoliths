@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="text-right">
-                € {{ Number::currency($order->amount) }}
+                {{ Number::currency($order->amount) }}
             </div>
         @endforeach
     </div>
