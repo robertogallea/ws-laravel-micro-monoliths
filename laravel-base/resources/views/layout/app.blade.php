@@ -19,6 +19,7 @@
         @auth
             <nav class="space-x-4">
                 <a href="#" class="text-gray-600 hover:text-gray-900">{{ auth()->user()->name }}</a>
+                <a href="{{ route('logout') }}" class="text-gray-600 hover:text-gray-900">Logout</a>
             </nav>
         @endauth
     </div>

@@ -12,6 +12,14 @@ Route::get('/', function () {
 
 Route::get('/dashboard', fn () => redirect('/'))->name('dashboard');
 
+Route::get('/login', function () {
+    return redirect(route('saml2_login', 'test'));
+})->name('login');
+
+Route::get('/logout', function () {
+    return redirect(route('saml2_logout', 'test'));
+})->name('logout');
+
 Route::get('/users', function () {
     $users = User::with(['orders' => function ($q) {
         $q->withSum('products', 'price');
@@ -45,4 +53,4 @@ Route::get('/orders/create', function (Request $request) {
     return redirect(route('orders'));
 })->name('orders.create');
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
