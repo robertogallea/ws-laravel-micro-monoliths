@@ -24,4 +24,26 @@ $config = array(
             'id' => "2",
         ),
     ),
+
+    'default-sql' => [
+        'sqlauth:PasswordVerify',
+
+        // DSN per la connessione al database
+        'dsn' => 'mysql:host=mysql;dbname=app',
+
+        // Username del database
+        'username' => 'laravel',
+
+        // Password del database
+        'password' => 'laravel_password',
+
+
+        'passwordhashcolumn' =>  'password',
+
+        // Query per recuperare l'utente
+        // :username verrà sostituito con il nome utente inserito
+        'query' => 'SELECT id, email, name, password FROM users WHERE email = :username',
+
+
+    ],
 );
