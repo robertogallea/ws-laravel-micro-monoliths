@@ -2,3 +2,4 @@ scaletta
 .idea
 .env
 scaletta.md
+simplesamlphp/cert/**

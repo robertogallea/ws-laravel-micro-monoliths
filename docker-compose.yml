@@ -66,6 +66,34 @@ services:
     networks:
       - laravel-network
 
+
+  # SimpleSAMLphp
+  idp:
+    build:
+      context: ./simplesamlphp
+    image: cirrusid/simplesamlphp
+    container_name: idp
+    ports:
+      - "443:443"
+    environment:
+      - SSP_ADMIN_PASSWORD=${SSP_ADMIN_PASSWORD}
+      - SSP_ENABLED_MODULES=sqlauth exampleauth
+      - SSP_SECRET_SALT=${SSP_SECRET_SALT}
+      - SSP_ENABLE_IDP=true
+    networks:
+      - laravel-network
+    volumes:
+      - ./simplesamlphp/config/authsources.php:/var/simplesamlphp/config/authsources.php
+      - ./simplesamlphp/cert:/var/simplesamlphp/cert
+    command: |
+      bash -c "
+        chown -R www-data:www-data /var/simplesamlphp/cert &&
+        /opt/simplesaml/ssp-startup.sh
+      "
+    depends_on:
+      - mysql
+
+
 volumes:
   mysql_data:
 
