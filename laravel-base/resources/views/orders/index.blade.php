@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('shared::layout.app')
 
 @section('title', 'Gestione ordini')
 
@@ -10,7 +10,8 @@
         nostrum vitae?
     </p>
     @auth
-    <a class="w-64 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded rounded-md" href="{{ route('orders.create') }}">Crea ordine</a>
+        <a class="w-64 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded rounded-md"
+           href="{{ route('orders.create') }}">Crea ordine</a>
     @endauth
     <div class="grid grid-cols-4 w-full mt-4 bg-gray-100 p-4 gap-y-8">
         <div class="font-bold">Cliente</div>

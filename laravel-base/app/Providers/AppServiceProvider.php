@@ -24,17 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(Saml2LoginEvent::class, function (Saml2LoginEvent $event) {
-            $attributes = $event->getSaml2User()->getAttributes();
 
-            $user = User::find($attributes['id'][0]);
-
-            auth()->login($user);
-        });
-
-        Event::listen(Saml2LogoutEvent::class, function (Saml2LogoutEvent $event) {
-            auth()->logout();
-            Session::save();
-        });
     }
 }

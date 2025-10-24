@@ -13,7 +13,9 @@
         "aacotroneo/laravel-saml2": "^2.1",
         "laravel/breeze": "^2.3",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^2.10.1",
+        "laravelday-2025/shared": "@dev",
+        "phiki/phiki": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -76,6 +78,12 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+      {
+        "type": "path",
+        "url": "./shared-package"
+      }
+    ]
 }
