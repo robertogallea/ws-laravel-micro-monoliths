@@ -23,11 +23,12 @@ services:
     volumes:
       - ./php/php.ini:/user/local/etc/php/php.ini
       - ./laravel-base:/var/www/html
+      - ./shared-package:/var/www/shared-package
     working_dir: /var/www/html
     command: |
       bash -c "
-        chown -R www-data:www-data storage bootstrap/cache database && 
-        chmod -R 775 storage bootstrap/cache database/database.sqlite && 
+        chown -R www-data:www-data storage && 
+        chmod -R 775 storage bootstrap/cache && 
         composer install &&
         php artisan migrate --force &&
         /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

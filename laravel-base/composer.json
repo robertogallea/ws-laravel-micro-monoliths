@@ -14,7 +14,7 @@
         "laravel/breeze": "^2.3",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "laravelday-2025/shared": "@dev",
+        "laravelday-2025/shared": "*",
         "phiki/phiki": "^2.0"
     },
     "require-dev": {
@@ -83,7 +83,7 @@
     "repositories": [
       {
         "type": "path",
-        "url": "./shared-package"
+        "url": "../shared-package"
       }
     ]
 }

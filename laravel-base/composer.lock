@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ee82b1a2c607bb285447df6dec1a691",
+    "content-hash": "e18672cc40fad1cf84929378d1dba350",
     "packages": [
         {
             "name": "aacotroneo/laravel-saml2",
@@ -1589,7 +1589,7 @@
             "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "./shared-package",
+                "url": "../shared-package",
                 "reference": "54461e14599b10059c4a16d5a4645ea257699040"
             },
             "require": {
@@ -9636,9 +9636,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravelday-2025/shared": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
