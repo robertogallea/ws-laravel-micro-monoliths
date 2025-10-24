@@ -29,7 +29,7 @@ $config = array(
         'sqlauth:PasswordVerify',
 
         // DSN per la connessione al database
-        'dsn' => 'mysql:host=mysql;dbname=app',
+        'dsn' => 'mysql:host=mysql;dbname=users',
 
         // Username del database
         'username' => 'laravel',

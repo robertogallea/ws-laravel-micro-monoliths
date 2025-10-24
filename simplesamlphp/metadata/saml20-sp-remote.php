@@ -12,13 +12,28 @@
 $metadata['users'] = array(
     'AssertionConsumerService' => [
         [
-            'Location' => 'http://app.local:8000/saml2/test/acs',
+            'Location' => 'http://app.local:8000/users/saml2/test/acs',
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
         ],
     ],
     'SingleLogoutService' => [
         [
-            'Location' => 'http://app.local:8000/saml2/test/sls',
+            'Location' => 'http://app.local:8000/users/saml2/test/sls',
+            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ],
+    ],
+);
+
+$metadata['products'] = array(
+    'AssertionConsumerService' => [
+        [
+            'Location' => 'http://app.local:8000/products/saml2/test/acs',
+            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ],
+    ],
+    'SingleLogoutService' => [
+        [
+            'Location' => 'http://app.local:8000/products/saml2/test/sls',
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
         ],
     ],
