@@ -21,33 +21,10 @@ Route::get('/logout', function () {
 })->name('logout');
 
 Route::get('/users', function () {
-    $users = User::with(['orders' => function ($q) {
-//        $q->withSum('products', 'price');
-    },
-//        'orders.products'
-    ])->get();
+    $users = User::query()->get();
 
     return view('users.index')->with('users', $users);
 })->name('users');
 
-Route::get('/orders', function () {
-    $orders = Order::latest('id')->get();
-
-    return view('orders.index')->with(compact('orders'));
-})->name('orders');
-
-Route::get('/orders/create', function (Request $request) {
-    $order = Order::create([
-        'user_id' => $request->user()->id,
-        'amount' => 0,
-    ]);
-
-    $products = Product::all();
-    $orderProducts = $products->random(rand(2, 5));
-    $order->products()->attach($orderProducts->pluck('id'));
-    $order->update(['amount' => $orderProducts->sum('price')]);
-
-    return redirect(route('orders'));
-})->name('orders.create');
 
 //require __DIR__.'/auth.php';

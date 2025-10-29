@@ -38,3 +38,18 @@ $metadata['products'] = array(
         ],
     ],
 );
+
+$metadata['orders'] = array(
+    'AssertionConsumerService' => [
+        [
+            'Location' => 'http://app.local:8000/orders/saml2/test/acs',
+            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+        ],
+    ],
+    'SingleLogoutService' => [
+        [
+            'Location' => 'http://app.local:8000/orders/saml2/test/sls',
+            'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+        ],
+    ],
+);

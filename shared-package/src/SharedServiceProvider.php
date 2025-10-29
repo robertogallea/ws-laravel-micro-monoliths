@@ -34,6 +34,12 @@ class SharedServiceProvider extends ServiceProvider
                     'name' => $attributes['name'][0],
                     'password' => bcrypt('password'),
                 ]);
+            } else {
+                $user->update([
+                    'email' => $attributes['email'][0],
+                    'name' => $attributes['name'][0],
+                    'password' => bcrypt('password'),
+                ]);
             }
 
             auth()->login($user);

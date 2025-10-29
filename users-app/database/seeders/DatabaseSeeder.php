@@ -29,12 +29,6 @@ class DatabaseSeeder extends Seeder
 
         $users = collect([$user1, $user2]);
 
-        collect(range(1,20))->each(function (int $index) use ($products) {
-            $order = Order::factory()->create();
-            $orderProducts = $products->random(rand(2, 5));
-            $order->products()->attach($orderProducts->pluck('id'));
-            $order->update(['amount' => $orderProducts->sum('price')]);
-        });
 
 
     }

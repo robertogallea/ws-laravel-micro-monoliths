@@ -83,6 +83,29 @@ services:
       - ./products-app:/var/www/html
       - ./shared-package:/var/www/shared-package
 
+  orders-app:
+    <<: *laravel-base
+    container_name: orders-app
+    build:
+      dockerfile: ../laravel-base/Dockerfile
+      context: ./orders-app
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_DATABASE: orders
+      DB_USERNAME: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      SAML2_TEST_IDP_HOST: https://app.local/simplesaml
+      SAML2_TEST_IDP_ENTITYID: test
+      SAML2_TEST_IDP_x509: MIIEazCCAtOgAwIBAgIUAu6lEVrZ4NKiCP1ss0tP8vnj1OIwDQYJKoZIhvcNAQELBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNTEwMjMxNDI2MzFaFw0zNTEwMjExNDI2MzFaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQDHNIA+IcjdUAS/c2xKo2XKJKbVDAVTvgyC/0w7ILr4Mznr6tXM+PaT8UYDou/jlBOK76Y0ac61yfpGV8SIxuK85Mg2NFxXv4VaRjSAgh+N0RK4x9ISApMDRGgFA9Ecoloe/hFeczuU9tAPFRIh3x+OHKSFMBAB42iOoJGr68ZjH6WwkndZJfkRZR7lpXNIO8lQdlY1k+011EAy3lRLtMIMRz+HZi0fg49gE9Sk2z8VFfEL4gGLwVNeT2RwyA4LbSZgo152iAUtssYmmFdFZ+bRIFfP7bWt+xCGoq87uEFEwW5zI5E3q4Nk80LyE1hbFA7hEtM/nz7Usfyg8xFcx5EtLuzFGub48LqvMKbzJQI7asbDht01wFlXK7wEoya8PNafsdfe0gtyUCXjM8s+QAsy2Fnesc+O/fqv1sMx73QPL08z+dzZJuI+k/9ZK+zquSypprQHFir5+qX0py2a/VoY1kc8VgRtf8gRyYVdPfkOl7FflURC4IfHzCUMe6wx/kECAwEAAaNTMFEwHQYDVR0OBBYEFKeGsXK9gZjWcjzWqeWzUlAVsAPzMB8GA1UdIwQYMBaAFKeGsXK9gZjWcjzWqeWzUlAVsAPzMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggGBAC4MnugnXK8i2xUhQM6eGUoil8EiwBIboLcmaqSBnORIlpqAUuTFKOX0Z03LAOnIJtAOSgmoXFTMKSS1mpxtuSb2OLO8MHk0VGWuGJN9mbBCnUr61S0kCojRhqXXakHcPOdP6/+yY4GjHXQKbk9mRSF4ieSA6gV8/lNH5ePZhaiJWc6fweI663lcOXjmdvX5D46bi6Cmw0XLqOCbLAu35vms4SvzQv5P/PVkICXgMCHkVwuW07WM2viydH+cBeVRTPGQJaXIAg9g5StMPidiFowcanOukAH7tHGWipPps+D2UbnD1hflq+hKYD8X8aejMApKUgNHyLLkYHXtwSOUiNf4/EVsHOqEQxTaSUsczNi4eLXe+rODQ67yp+neJ6CvXyW0mPWTM6sh+NJ0HFwgqQs77k8XRkiLyfXi9pZ9gjP96jy6iSJUqPKTP6FFs2Lxby/zbfW8PVghX7k8ztEA5Ab8Xm2AmQYsOqIatV4xXLPux6vTGUQE36G/nkZlXz/pQQ==
+      SAML2_TEST_SP_ENTITYID: orders
+      SESSION_COOKIE: orders_session
+      #      SAML2_TEST_BASEURL: http://app.local:8000/users/saml2
+    volumes:
+      - ./php/php.ini:/user/local/etc/php/php.ini
+      - ./orders-app:/var/www/html
+      - ./shared-package:/var/www/shared-package
+
   # MySQL Server
   mysql:
     image: mysql:8.0
