@@ -10,11 +10,12 @@ Route::get('/', function () {
     return redirect()->route('users');
 });
 
-Route::get('/dashboard', fn () => redirect('/'))->name('dashboard');
+Route::get('/dashboard', fn() => redirect('/'))->name('dashboard');
 
 Route::get('/orders/login', function () {
     return redirect(route('saml2_login', 'test'));
-})->name('login');
+})->withoutMiddleware(\LaravelDay2025\SharedPackage\Http\Middleware\CheckSAMLPassive::class)
+    ->name('login');
 
 Route::get('/orders/logout', function () {
     return redirect(route('saml2_logout', 'test'));

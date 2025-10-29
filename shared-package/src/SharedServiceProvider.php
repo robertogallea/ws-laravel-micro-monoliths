@@ -7,8 +7,10 @@ use Aacotroneo\Saml2\Events\Saml2LogoutEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use LaravelDay2025\SharedPackage\Http\Middleware\CheckSAMLPassive;
 use LaravelDay2025\SharedPackage\View\Components\MainMenu;
 
 class SharedServiceProvider extends ServiceProvider
@@ -49,5 +51,7 @@ class SharedServiceProvider extends ServiceProvider
             auth()->logout();
             Session::save();
         });
+
+        Route::pushMiddlewareToGroup('web', CheckSAMLPassive::class);
     }
 }
