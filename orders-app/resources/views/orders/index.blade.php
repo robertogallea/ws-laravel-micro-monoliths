@@ -23,17 +23,16 @@
                 {{ $order->user->name }}
             </div>
             <div class="text-center">
-                {{--                {{ $order->products->count() }}--}}?
+                {{ $order->products->count() }}
             </div>
             <div>
                 <div class="grid grid-cols-2">
-                    {{--                    @forelse($order->products as $product)--}}
-                    {{--                        <div>{{ $product->name }}</div>--}}
-                    {{--                        <div>{{ Number::currency($product->price) }}</div>--}}
-                    {{--                    @empty--}}
-                    {{--                        ---}}
-                    {{--                    @endforelse--}}
-                    ?
+                    @forelse($order->products as $product)
+                        <div>{{ $product->name }}</div>
+                        <div>{{ Number::currency($product->price) }}</div>
+                    @empty
+                        -
+                    @endforelse
                 </div>
             </div>
             <div class="text-right">

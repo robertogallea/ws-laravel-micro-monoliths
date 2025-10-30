@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Order::class)->constrained();
             $table->unsignedInteger('product_id');
-            $table->timestamps();
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\APIProductRepository;
 use App\Services\ProductService;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,10 +19,15 @@ class Order extends Model
 
     protected $guarded = [];
 
-//    public function products(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Product::class);
-//    }
+    public function products(): Attribute
+    {
+        return Attribute::get(fn () => app(APIProductRepository::class)->fetchByIds($this->items->map->product_id));
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 
 
     public function user(): BelongsTo

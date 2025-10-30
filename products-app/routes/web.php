@@ -26,3 +26,8 @@ Route::get('/products', function () {
     $products = Product::all();
     return view('products.index')->with('products', $products);
 })->name('products');
+
+
+Route::get('/api/products/{id}', function ($id) {
+    return Product::find($id);
+})->withoutMiddleware(['web', \LaravelDay2025\SharedPackage\Http\Middleware\CheckSAMLPassive::class]);
