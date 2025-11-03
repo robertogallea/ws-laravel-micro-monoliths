@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Dom\Attr;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,5 +53,15 @@ class User extends Authenticatable
     public function getOrdersAttribute(): Collection
     {
         return collect();
+    }
+
+    public function ordersCount(): Attribute
+    {
+        return Attribute::get(fn () => cache()->get('users:' . $this->id . ':orders-count'));
+    }
+
+    public function ordersTotalAmount(): Attribute
+    {
+        return Attribute::get(fn() => cache()->get('users:' . $this->id . ':orders-total-amount'));
     }
 }

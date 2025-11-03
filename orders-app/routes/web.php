@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OrderCreated;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -27,16 +28,21 @@ Route::get('/orders', function () {
     return view('orders.index')->with(compact('orders'));
 })->name('orders');
 
-Route::get('/orders/create', function (Request $request) {
+Route::get('/orders/create', function (Request $request, \App\Services\APIProductRepository $productRepository) {
     $order = Order::create([
         'user_id' => $request->user()->id,
         'amount' => 0,
     ]);
 
-    $products = Product::all();
-    $orderProducts = $products->random(rand(2, 5));
-    $order->products()->attach($orderProducts->pluck('id'));
-    $order->update(['amount' => $orderProducts->sum('price')]);
+    $products = $productRepository->fetchAllIds();
+    $orderProducts = $products->random(rand(2, 5))
+    ->map(function ($productId) use ($order) {
+        return $order->items()->create(['product_id' => $productId]);
+    });
+
+    $order->update(['amount' => $order->products->sum('price')]);
+
+    OrderCreated::dispatch($order);
 
     return redirect(route('orders'));
 })->name('orders.create');

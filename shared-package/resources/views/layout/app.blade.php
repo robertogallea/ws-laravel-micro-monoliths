@@ -43,7 +43,7 @@
 
 <!-- Footer -->
 <footer class="mt-10 border-t py-6 text-center text-sm text-gray-500">
-    © 2025 Il Tuo Nome. Tutti i diritti riservati.
+    Host: {{ gethostname() }}.
 </footer>
 </body>
 </html>

@@ -20,10 +20,10 @@
                 {{ $user->email }}
             </div>
             <div class="text-center">
-                {{ $user->orders->count() ?? '-' }}
+                {{ $user->orders_count ?? '-' }}
             </div>
             <div class="text-center">
-                € {{ Number::currency($user->orders->sum('products_sum_price') ?? 0)}}
+                € {{ Number::currency($user->orders_total_amount ?? 0)}}
             </div>
         @endforeach
     </div>
