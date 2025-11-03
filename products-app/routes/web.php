@@ -28,6 +28,11 @@ Route::get('/products', function () {
 })->name('products');
 
 
+Route::get('/api/products', function () {
+    return Product::all()->map->id;
+})->withoutMiddleware(['web', \LaravelDay2025\SharedPackage\Http\Middleware\CheckSAMLPassive::class]);
+
+
 Route::get('/api/products/{id}', function ($id) {
     return Product::find($id);
 })->withoutMiddleware(['web', \LaravelDay2025\SharedPackage\Http\Middleware\CheckSAMLPassive::class]);
