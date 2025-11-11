@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Fluo Grid Table · Tailwind v4 · No JS</title>
+    <title>@yield('page_title') - Laravel Micro-Monoliths @ {{ gethostname() }}</title>
 
     <!-- Tailwind da CDN -->
     <script src="https://cdn.tailwindcss.com"></script>

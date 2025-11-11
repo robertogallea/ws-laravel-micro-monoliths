@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('page_title', 'Gestione prodotti')
+
 @section('title')
     Gestione <span class="text-neon-pink">Prodotti</span>
 @endsection

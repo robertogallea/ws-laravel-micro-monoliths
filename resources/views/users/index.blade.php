@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('page_title', 'Gestione utenti')
+
 @section('title')
     Gestione <span class="text-neon-pink">Utenti</span>
 @endsection

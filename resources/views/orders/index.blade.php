@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('page_title', 'Gestione ordini')
+
 @section('title')
     Gestione <span class="text-neon-pink">Ordini</span>
 @endsection
