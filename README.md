@@ -50,4 +50,4 @@ git checkout <commit_hash>
 ```
 
 Elenco degli hash dei commit:
-- `` - Initial commit
+- `ca5ebff` - Initial commit
