@@ -3,7 +3,15 @@
 Repository per il workshop "Federazione di Micro-Monoliti con SSO" organizzato dal Grusp a Verona il giorno 21 novembre
 2025.
 
-### Istruzioni per l'installazione
+## Pre-requisiti per seguire il workshop
+
+Per seguire il workshop sono indispensabili i seguenti strumenti applicativi.
+
+- PHP 8+
+- Docker
+- Docker Compose (versione plugin)
+
+## Istruzioni per l'installazione dell'applicazione
 
 Per installare l'applicazione di esempio eseguire i seguenti comandi:
 
