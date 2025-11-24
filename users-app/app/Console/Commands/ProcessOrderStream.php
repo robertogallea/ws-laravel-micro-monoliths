@@ -35,7 +35,7 @@ class ProcessOrderStream extends Command
                 Log::channel('syslog')->info($message);
                 $this->info("[$channel] $message");
                 $message = json_decode($message, true);
-                $u = User::find($message['user_id'])->first();
+                $u = User::find($message['user_id']);
                 Cache::put('users:' . $u->id . ':orders-count', $message['orders_count']);
                 Cache::put('users:' . $u->id . ':orders-total-amount', $message['orders_total_amount']);
             });

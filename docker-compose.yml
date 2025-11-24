@@ -160,7 +160,7 @@ services:
     command: |
       bash -c "
         chown -R www-data:www-data /var/simplesamlphp/cert &&
-        openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/private/local-stack-dev.key -out /etc/ssl/certs/local-stack-dev.pem -sha256 -days 365  -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname" && 
+        openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/private/local-stack-dev.key -out /etc/ssl/certs/local-stack-dev.pem -sha256 -days 365  -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=app.local" && 
         /opt/simplesaml/ssp-startup.sh
       "
     depends_on:

@@ -21,7 +21,7 @@ return $settings = array(
     'strict' => true, //@todo: make this depend on laravel config
 
     // Enable debug mode (to print errors)
-    'debug' => env('APP_DEBUG', false),
+    'debug' => false,
 
     // Service Provider Data that we are deploying
     'sp' => array(

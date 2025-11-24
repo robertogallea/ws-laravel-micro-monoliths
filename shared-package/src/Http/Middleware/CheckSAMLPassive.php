@@ -5,13 +5,14 @@ namespace LaravelDay2025\SharedPackage\Http\Middleware;
 use Aacotroneo\Saml2\Saml2Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckSAMLPassive
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user()  && $request->header('Referer') != route('saml2_acs', 'test')) {
+        if (!$request->user()  && !session()->has('saml2_error')) {
             $saml2Auth = new Saml2Auth(Saml2Auth::loadOneLoginAuthFromIpdConfig('test'));
 
             return redirect($saml2Auth->login($request->fullUrl(), [], false, true, true)); // isPassive = true
